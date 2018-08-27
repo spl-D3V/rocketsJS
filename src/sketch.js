@@ -16,6 +16,7 @@ let count = 0;
 let generation = 0
 let trackWinners = [];
 let recordGlobal;
+let started = false;
 
 p5.disableFriendlyErrors = true;
 function setup(){
@@ -30,27 +31,41 @@ function setup(){
 
 function draw(){
     background(0);
-    target.show();
-    sourceRockets.show();
-    drawObstacles();
-    poprockets.run();
-    count++;
-    if(count === lifespan){
-        poprockets.evaluate();
-        poprockets.selection();
-        if(recordGlobal > poprockets.recordPopulation){
-            if(trackWinners.length === 10){
-                trackWinners.splice(0,1);
+    if(started){
+        target.show();
+        sourceRockets.show();
+        drawObstacles();
+        poprockets.run();
+        count++;
+        if(count === lifespan){
+            poprockets.evaluate();
+            poprockets.selection();
+            if(recordGlobal > poprockets.recordPopulation){
+                if(trackWinners.length === 10){
+                    trackWinners.splice(0,1);
+                }
+                trackWinners.push(poprockets.trackFollowed.slice());
+                recordGlobal = poprockets.recordPopulation;
             }
-            trackWinners.push(poprockets.trackFollowed.slice());
-            recordGlobal = poprockets.recordPopulation;
+            count = 0;
+            generation++
+            printData = true;
         }
-        count = 0;
-        generation++
-        printData = true;
+        drawTrails();
+        printHTMLdata();
+    }else{
+        drawText();
     }
-    drawTrails();
-    printHTMLdata();
+}
+
+let drawText = function(){
+    let txt = "Crea obstáculos de diferentes tamaños con el botón izquierdo del ratón.\n\n"+
+        "Elimínalos con el botón central.\n\n"+
+        "La diana y los obstaculos pueden desplazarse por la pantalla usando el ratón.\n\n"+
+        "Para cambiar la posición del origen de los cohetes haz doble click en la posición deseada.";
+    fill(255, 150);
+    textSize(16);
+    text(txt, 0.05*width, 80, 0.9*width, 0.9*height);
 }
 
 let drawTrails = function(){
@@ -86,7 +101,7 @@ let drawObstacles = function(){
 
 let ResetPopulation = function(sourceX, sourceY){
     if(!sourceX && !sourceY){
-        target = new Target(width/4, 50, radius);
+        target = new Target(width/5, 50, radius);
     }
     sourceRockets = new Target(sourceX ? sourceX : width*0.75, sourceY ? sourceY : height, 35, true);
     poprockets = new Population(populationSize, mutationRate);
