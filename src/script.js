@@ -35,6 +35,7 @@ let html5stuff = function(){
     canvas.addEventListener("mousemove",movingObstacle)
     canvas.addEventListener("mouseup", endMouseEvent);
     canvas.addEventListener("dblclick", moveSource);
+    canvas.addEventListener("click", startSketch);
     cicloVal = document.getElementById("ciclo");
     poblacionVal = document.getElementById("poblacion");
     mutacionVal = document.getElementById("mutacion");
@@ -105,6 +106,9 @@ let sendForm = function(e){
         btnResume.hidden = true;
         btnStop.hidden = false;
     }
+}
+let startSketch = function(){
+    started = true;
 }
 let startMouseEvent = function(e){
     let position = {x: mouseX, y:mouseY};
