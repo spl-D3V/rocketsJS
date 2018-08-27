@@ -1,0 +1,58 @@
+body{
+    font-family: Avenir, sans-serif;
+    margin: .5rem auto;
+    width: 95%;
+}
+td {
+    text-align: center;
+}
+th {
+    text-align: left;
+}
+.thresult{
+  font-size: 18px;
+  color: #616161;
+  line-height: 1.4;
+  background-color: transparent;
+  border-bottom: 2px solid #f2f2f2;
+}
+.thform{
+    color: #616161;
+}
+header, section, footer, aside, nav, main, article, figure {
+    display: block;
+}
+.thead-light{
+    background-color: #009688;
+}
+.card {
+    margin:auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #009688;
+    color: #ffffff;
+}
+.main {
+    text-align:center;
+    grid-area: auto;
+}
+.right {
+    text-align:left;
+    grid-area: auto;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+    padding: 9px;
+    grid-gap: .5rem;
+}
+.container div{
+    padding: 9px;
+}

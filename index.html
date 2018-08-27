@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./src/p5.min.js"></script>
+    <script src="./src/script.js"></script>
+    <script src="./src/sketch.js"></script>
+    <script src="./src/rocket.js"></script>
+    <script src="./src/dna.js"></script>
+    <script src="./src/population.js"></script>
+    <script src="./src/obstacle.js"></script>
+    <link rel="stylesheet" href="./css/stylesheet.css" type="text/css" media="all" />
+    <title>Smart Rockets</title>
+  </head>
+  <body>
+    <header class="header bkg-main">
+        <h1>Smart Rockets</h5>
+    </header>
+    <main class="container">
+      <section class="main">
+        <div class="card">
+            <div id="canvasContainer"></div>
+            <div>
+                <button id="reset" type="button" class="btn btn-warning btn-sm">Reset</button>
+                <button id="stop" type="button" class="btn btn-danger btn-sm">Stop</button>
+                <button id="resume" type="button" class="btn btn-info btn-sm" hidden>Resume</button>
+            </div>
+        </div>
+      </section>
+      <section class="right">
+        <div class="card">
+          <table>
+              <thead class="thresult">
+                <tr>
+                  <th>Ciclo</th>
+                  <th>Generación</th>
+                  <th>Fitness</th>
+                  <th>Avg. fitness</th>
+                  <th>Record</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="count"></td>
+                  <td id="generation"></td>
+                  <td id="fitness"></td>
+                  <td id="avgfitness"></td>
+                  <td id="record"></td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <form action="#" id="form">
+            <h2>Parámetros</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <th class="thform">Ciclos :</th>
+                  <td><input id="ciclo" type="number" min="100" step="1"></td>
+                </tr>
+                <tr>
+                  <th class="thform">Población :</th>
+                  <td><input id="poblacion" type="number" min="1" step="1"></td>
+                </tr>
+                <tr>
+                  <th class="thform">Tasa de mutación :</th>
+                  <td><input id="mutacion" type="number" min="0" max="1" step="0.01"></td>
+                </tr>
+                <tr>
+                  <th class="thform">Aceleracióin max. :</th>
+                  <td><input id="acel" type="number" min="0.01" step="0.01"></td>
+                </tr>
+                <tr>
+                  <th class="thform">Recompensa (max) :</th>
+                  <td><input id="maxrew" type="number" min="5" step="1"></td>
+                </tr>
+                <tr>
+                  <th class="thform">Recompensa (min) :</th>
+                  <td><input id="minrew" type="number" min="1" step="1"></td>
+                </tr>
+                <tr>
+                  <th class="thform">Umbral penalización :</th>
+                  <td><input id="umbral" type="number" min="0" step="1"></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><input type="submit" value="Enviar"></td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
